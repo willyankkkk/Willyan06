@@ -1,0 +1,94 @@
+programa {
+  inclua biblioteca Matematica-->mat
+  funcao inicio() {
+    real cod,p=0,t=0,c=0,m=0,exit=1,valor=0,arredonda
+    inteiro qte,p2=0,t2=0,c2=0,m2=0
+    faca{
+    exit=1
+    enquanto(exit==1)
+    {
+      //Nessa parte as variáveis 'cod' e 'qte' são declaradas pelo cliente. Caso a variável 'qte' seja negativa, o loop acontece e a tela é limpa.
+      faca{
+        escreva("--------------------------------------------\nCódigo  1  Descrição     Preço\n1 Pendrive    32GB      R$49.90\n2 Teclado     USB       R$24.90\n3 Cartucho   HP1220     R$68.90\n4 Mouse    Bluetooth    R$119.90\n--------------------------------------------\nDigite o código do produto: ")
+        leia(cod)
+        escreva("--------------------------------------------\nDigite a quantidade do produto: ")
+        leia(qte)
+        limpa()
+      }enquanto(qte<=0)  
+      //Essa parte checa qual produto foi escolhido pelo cliente, adiciona o valor da variável 'qte' a variável específica do produto(p,t,c,m respectivamente).
+      //Caso o valor da variável 'cod' não esteja entre 1 e 4, o loop acontece e a tela é limpa.
+      escolha(cod){
+      caso 1: 
+      escreva("--------------------------------------------\nVocê adicionou ao carrinho:\n",qte, " unidades do produto Pendrive 32GB\n\nO que deseja fazer?\n--------------------------------------------\n(1) Adicionar outro produto\n(2) Ver o carrinho de compras\n--------------------------------------------\nSelecione:")
+      leia(exit)
+      p+=qte
+      p2=qte
+      limpa()
+      pare
+      caso 2: 
+      escreva("--------------------------------------------\nVocê adicionou ao carrinho:\n",qte, " unidades do produto Teclado USB\n\nO que deseja fazer?\n--------------------------------------------\n(1) Adicionar outro produto\n(2) Ver o carrinho de compras\n--------------------------------------------\nSelecione: ")
+      leia(exit)
+      t+=qte
+      t2=qte
+      limpa()
+      pare
+      caso 3: 
+      escreva("--------------------------------------------\nVocê adicionou ao carrinho:\n",qte, " unidades do produto Cartucho HP1220\n\nO que deseja fazer?\n--------------------------------------------\n(1) Adicionar outro produto\n(2) Ver o carrinho de compras\n--------------------------------------------\nSelecione:")
+      leia(exit)
+      c+=qte
+      c2=qte
+      limpa()
+      pare
+      caso 4: 
+      escreva("--------------------------------------------\nVocê adicionou ao carrinho:\n",qte, " unidades do produto Mouse Bluetooth\n\nO que deseja fazer?\n--------------------------------------------\n(1) Adicionar outro produto\n(2) Ver o carrinho de compras\n--------------------------------------------\nSelecione:")
+      leia(exit)
+      m+=qte
+      m2=qte
+      limpa()
+      pare
+    }
+    //Aqui o programa calcula o valor em reais que serão gastos com base na quantidade que determinados produtos foram escolhidos. 
+    //Caso tenham sido escolhidos eles aparecem no carrinho junto com sua quantidade,
+    //caso contrário o programa mostra o valor total da compra e exibe 3 opções para o cliente.
+    }
+      se(p>=1){
+        valor+=49.90*p2
+      } 
+      se(t>=1){
+        valor=valor+(24.90*t2)
+      }
+      se(c>=1){
+        valor=valor+(68.90*c2)
+      }
+      se(m>=1){
+        valor=valor+(119.90*m2)
+     }
+    arredonda = mat.arredondar(valor,2)
+    faca{
+      escreva("--------------------------------------------\nSeu carrinho de compras\n\nDescrição               Quantidade\n")
+      se(p2>=1){
+        escreva("Pendrive 32GB           ", p,"\n")
+      } 
+      se(t2>=1){
+        escreva("Teclado USB             ",t,"\n")
+      }
+      se(c2>=1){
+        escreva("Cartucho HP1220         ",c,"\n")
+      }
+      se(m2>=1){
+        escreva("Mouse Bluetooth         ",m,"\n")
+     }
+    escreva("Valor total do carrinho: R$",valor,"\n--------------------------------------------\nO que deseja fazer?\n--------------------------------------------\n(1) Adicionar outro produto\n(2) Limpar carrinho de compras\n(3) Sair\nSelecione: ")
+    leia(exit)
+    limpa()
+    //Caso o cliente escolha o número 1, o loop ativa e todas as informações são mantidas. 
+    //Caso o cliente escolha o número 2, o loop ativa mas todas as informações são apagadas.
+    //Caso o cliente escolha o número 3, o programa encerra. Caso outro número seja inserido, um loop irá manter o cliente no carrinho até que uma escolha válida seja inserida.
+    }enquanto(exit<=0 ou exit>3)
+    se(exit==2){
+      p=0,valor=0,t=0,c=0,m=0
+    }
+    limpa()
+    }enquanto(exit>=1 e exit<=2)
+  }
+}
